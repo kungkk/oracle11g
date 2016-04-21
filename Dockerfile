@@ -1,16 +1,16 @@
-FROM    centos:7
+FROM    centos:6.7
 MAINTAINER "kkk" <kkk@jccsoftware.com>
 RUN	mkdir -p /run/lock/subsys; \
+	yum check-update; \
+	yum update; \
 	yum install -y libaio bc flex net-tools; \
 	yum clean all
 
+#	
 # Create group named "dba"
-RUN groupadd dba
-
+#RUN groupadd dba
 # Create user named "oracle" and joined into "dba" group
-RUN useradd -G dba oracle
-
-
+#RUN useradd -G dba oracle
 #passwd oracle
 
 # Create oracle directory
